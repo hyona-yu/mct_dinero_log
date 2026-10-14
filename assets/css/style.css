@@ -13,16 +13,25 @@
   font-style: normal;
   font-display: swap;
 }
+
 :root {
-  --bg: #f6f1ea;
-  --ink: #2b2622;
-  --muted: #8a7f73;
-  --line: #ddd3c5;
-  --accent: #b08d5f;
+  --bg: #e6f0fd;
+  --ink: #26324a;
+  --muted: #5d6b86;
+  --line: #bcd3f0;
+  --card-bg: #ffffff;
+  --card-line: #cfe0f5;
+  --soft: #d3e5fc;
+  --badge-bg: #ffe0ea;
+  --badge-ink: #a82f5a;
+  --accent: #d9c4ff;
+  --accent-hover: #ffc9db;
+  --blue: #4f7fc4;
   --serif: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", Georgia, serif;
   --sans: "NanumSquare", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   color-scheme: light;
 }
+
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
@@ -35,69 +44,119 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
 .wrap {
   max-width: 440px;
   margin: 0 auto;
-  padding: max(40px, env(safe-area-inset-top)) 24px max(40px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: max(32px, env(safe-area-inset-top)) 20px max(40px, env(safe-area-inset-bottom));
 }
-a { color: inherit; text-decoration: none; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
+/* 마스트헤드 */
 .masthead {
-  text-align: center;
-  font-family: var(--serif);
-  font-size: 12px;
-  letter-spacing: 0.32em;
-  color: var(--muted);
   display: flex;
   align-items: center;
   gap: 14px;
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.34em;
+  color: var(--muted);
 }
 .masthead::before, .masthead::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
-.profile { text-align: center; padding: 36px 0 32px; }
+/* 프로필 */
+.profile { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .avatar {
-  width: 96px; height: 96px; border-radius: 50%;
-  margin: 0 auto 20px;
-  background: #e9dfd0;
-  display: grid; place-items: center;
-  overflow: hidden;
+  width: 112px; height: 112px;
+  padding: 5px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: #fff;
+}
+.avatar-inner {
   position: relative;
-  font-family: var(--serif); font-size: 36px; color: var(--accent);
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--soft);
+  display: grid; place-items: center;
+  font-family: var(--serif); font-size: 40px; font-weight: 600; color: var(--blue);
 }
-.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.name { font-size: 22px; font-weight: 700; margin: 0 0 8px; }
-.tagline { margin: 0; font-size: 15px; color: var(--muted); word-break: keep-all; }
+.avatar-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.name { margin: 20px 0 0; font-size: 28px; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; }
+.tagline { margin: 10px 0 0; font-size: 15px; color: var(--muted); word-break: keep-all; }
 
-.toc { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
-.toc li { border-bottom: 1px solid var(--line); }
-.toc a, .toc .row {
-  display: grid;
-  grid-template-columns: 40px 1fr 20px;
+/* 링크 카드 */
+.links { display: flex; flex-direction: column; gap: 12px; }
+.card {
+  display: flex;
   align-items: center;
-  column-gap: 4px;
-  padding: 22px 2px;
-  transition: padding-left .2s ease;
+  gap: 16px;
+  min-height: 84px;
+  padding: 16px 16px 16px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-line);
+  border-radius: 20px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.toc a:hover { padding-left: 8px; }
-.toc .row .desc { color: var(--ink); opacity: .65; }
-.num { font-size: 13px; color: var(--accent); letter-spacing: 0.08em; }
-.title { font-size: 18px; font-weight: 700; word-break: keep-all; }
-.desc { display: block; margin-top: 3px; font-size: 13px; font-weight: 400; color: var(--muted); }
-.arrow { color: var(--muted); justify-self: end; }
-.toc li.primary .title { font-size: 19px; }
+a.card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(120, 150, 200, .22); border-color: #ffb3cc; }
+a.card:active { transform: translateY(0); }
+.card-note { min-height: 0; padding: 18px 20px; }
 
-.deal { margin-top: 56px; }
-.deal-label { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
-.deal-card {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  font-size: 15px;
-  background: rgba(255,255,255,0.45);
+.badge {
+  flex: none;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  color: var(--badge-ink);
+  font-family: var(--serif); font-size: 14px; font-weight: 700;
 }
-.deal-card .arrow { font-size: 14px; }
-.disclosure { margin: 10px 2px 0; font-size: 11.5px; color: var(--muted); }
+.card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.card-title { font-size: 16px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+.card-desc { font-size: 12.5px; color: var(--muted); word-break: keep-all; }
+.pill {
+  flex: none;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge-ink);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+}
+.go {
+  flex: none;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--soft);
+  border: 1px solid var(--soft);
+  color: var(--ink);
+  transition: background .2s ease, border-color .2s ease;
+}
+a.card:hover .go { background: var(--accent-hover); border-color: var(--accent-hover); }
 
-footer { margin-top: 48px; text-align: center; font-family: var(--serif); font-size: 11px; color: var(--muted); letter-spacing: 0.12em; }
+/* 제휴 딜 */
+.deal { display: flex; flex-direction: column; gap: 10px; }
+.deal-label { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); }
+.deal-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--badge-ink); }
+.deal-name { font-family: var(--serif); font-size: 19px; font-weight: 700; line-height: 1.4; }
+.cta {
+  flex: none;
+  display: flex; align-items: center; gap: 6px;
+  height: 40px; padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 13px; font-weight: 700;
+  transition: background .2s ease, border-color .2s ease;
+}
+a.card:hover .cta { background: var(--accent-hover); border-color: var(--accent-hover); }
+.disclosure { margin: 0 4px; font-size: 12px; color: var(--muted); }
+
+footer { text-align: center; font-family: var(--serif); font-size: 11px; letter-spacing: 0.14em; color: var(--muted); }
