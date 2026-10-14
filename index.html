@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>디네 | DINERO LOG</title>
+<meta name="description" content="취향은 하이엔드, 지출은 합리적으로. 내집마련 · 재테크 · 결혼준비 기록.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="디네 | DINERO LOG">
+<meta property="og:description" content="취향은 하이엔드, 지출은 합리적으로">
+<!-- og:image 는 base64 로는 쓸 수 없어요. 실제 이미지 파일을 올리면 절대 경로로 추가하세요. -->
+<meta name="theme-color" content="#f6f1ea">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="masthead">DINERO LOG</div>
+
+  <section class="profile">
+    <div class="avatar">
+      <!-- assets/img/profile.b64(이미지의 base64 텍스트)를 assets/js/avatar.js 가 디코딩해서 보여줘요. 없으면 모노그램이 보여요. -->
+      <span aria-hidden="true">D</span>
+      <img id="avatar-img" alt="디네 프로필" hidden>
+    </div>
+    <h1 class="name">디네</h1>
+    <p class="tagline">취향은 하이엔드, 지출은 합리적으로</p>
+  </section>
+
+  <ol class="toc">
+    <!-- 링크가 아닌 안내 문구: 인스타에서 건너온 방문자를 다시 인스타로 돌려보내지 않아요. -->
+    <li class="primary">
+      <div class="row">
+        <span class="num">01</span>
+        <span class="title">릴스 자료가 궁금하다면<span class="desc">팔로우하고 댓글 남기면 DM으로 보내드려요</span></span>
+        <span aria-hidden="true"></span>
+      </div>
+    </li>
+    <li>
+      <a href="https://m.blog.naver.com/tr_vlog" target="_blank" rel="noopener">
+        <span class="num">02</span>
+        <span class="title">릴스에 다 못 담은 이야기<span class="desc">블로그에 놀러오세요</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/stories/highlights/17975779317028192/" target="_blank" rel="noopener">
+        <span class="num">03</span>
+        <span class="title">신혼집 기록<span class="desc">신혼집 계약부터 내집마련까지 궁금하다면?</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+  </ol>
+
+  <!-- 제휴 딜: 딜이 바뀌면 이 섹션의 href 와 딜 이름만 수정하세요. -->
+  <section class="deal">
+    <p class="deal-label">지금 받을 수 있는 웨딩 혜택</p>
+    <a class="deal-card" href="https://www.humancnt.com/deal/myu90v" target="_blank" rel="sponsored noopener">
+      <span>더파티움안양</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <p class="disclosure">제휴 링크로 계약하시면 수수료를 받아요.</p>
+  </section>
+
+  <footer>© DINERO LOG</footer>
+</main>
+
+<script src="assets/js/avatar.js" defer></script>
+
+<!-- Cloudflare Web Analytics: 대시보드에서 발급한 토큰으로 교체한 뒤 주석을 해제하세요.
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
+-->
+</body>
+</html>
